@@ -112,7 +112,6 @@ export default function NewNotePage() {
                     type="text"
                     name="title"
                     id="title"
-                    required
                     className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
                     placeholder="Ej. Lista de compras"
                   />
@@ -131,7 +130,6 @@ export default function NewNotePage() {
                     id="content"
                     name="content"
                     rows={8}
-                    required
                     className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
                     placeholder="Escribe el contenido de tu nota aquí..."
                   />
