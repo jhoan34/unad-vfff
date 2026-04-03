@@ -1,12 +1,24 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from "react"
 import { notes, Attachment } from '@/data';
 
 export default function NewNotePage() {
   const router = useRouter();
+  const [isAuthenticated] = useState(() => {
+    if( typeof window !== 'undefined') {
+      return localStorage.getItem('isLoggedIn') === 'true';
+    }
+    return false;
+  });
+  const [userEmail] = useState(() => {
+    if( typeof window !== 'undefined') {
+      return localStorage.getItem('userEmail') || 'usuario@ejemplo.com';
+    }
+    return "";
+  });
+  
   const [formdata, setFormdata ] = useState({
     title : "",
     content : "",
@@ -14,6 +26,12 @@ export default function NewNotePage() {
     date : new Date().toISOString().split('T')[0],
     file_upload : null as File | null
   })
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/login');
+    }
+  }, [router, isAuthenticated]);
 
   const submitForm = async ( event : React.FormEvent<HTMLFormElement> ) => {
     event.preventDefault()
@@ -49,6 +67,9 @@ export default function NewNotePage() {
       console.error("Error al crear la nota:", error);
     }
   }
+
+  if (!isAuthenticated) return null;
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Navbar */}
@@ -61,7 +82,7 @@ export default function NewNotePage() {
               </Link>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-gray-600 text-sm">usuario@ejemplo.com</span>
+              <span className="text-gray-600 text-sm">{userEmail}</span>
             </div>
           </div>
         </div>
