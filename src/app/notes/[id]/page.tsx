@@ -75,17 +75,14 @@ export default function ViewNotePage() {
       <main className="max-w-3xl mx-auto py-10 sm:px-6 lg:px-8">
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">
           <div className="px-4 py-5 sm:px-6 border-b border-gray-200 flex justify-between items-center">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
+            <h3 id="nota-titulo" className="text-lg leading-6 font-medium text-gray-900">
               {note.title}
             </h3>
             <div className="flex gap-2">
-              <Link
-                href="/"
-                className="text-sm text-gray-500 hover:text-gray-700 bg-gray-100 px-3 py-1 rounded"
-              >
+              <Link id="btn-volver" href="/" className="text-sm text-gray-500 hover:text-gray-700 bg-gray-100 px-3 py-1 rounded">
                 Volver
               </Link>
-              <button className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded">
+              <button id="btn-editar" className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded">
                 Editar
               </button>
             </div>
@@ -103,20 +100,20 @@ export default function ViewNotePage() {
               </span>
             </div>
 
-            <div className="prose max-w-none text-gray-700 whitespace-pre-wrap">
+            <div id="nota-contenido" className="prose max-w-none text-gray-700 whitespace-pre-wrap">
               {note.content}
             </div>
 
             {/* Archivo adjunto */}
             {note.file && (
-              <div className="pt-4 border-t border-gray-200 mt-6">
+              <div id="seccion-adjuntos" className="pt-4 border-t border-gray-200 mt-6">
                 <h4 className="text-sm font-medium text-gray-900">
                   Archivos Adjuntos
                 </h4>
                 <ul className="mt-2 border border-gray-200 rounded-md divide-y divide-gray-200">
                   <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                     <div className="flex items-center">
-                      <span className="ml-2 truncate">
+                      <span id="nombre-adjunto" className="ml-2 truncate">
                         {note.file.name}
                         {note.file.size && (
                           <span className="text-gray-400 text-xs ml-1">
@@ -126,6 +123,7 @@ export default function ViewNotePage() {
                       </span>
                     </div>
                     <a
+                      id="btn-descargar-adjunto"
                       href={note.file.url}
                       download={note.file.name}
                       target="_blank"

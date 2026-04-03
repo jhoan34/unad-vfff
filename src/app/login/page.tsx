@@ -44,7 +44,7 @@ export default function LoginPage() {
         </div>
         
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded relative text-sm text-center">
+          <div id="msg-error-login" className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded relative text-sm text-center">
             {error}
           </div>
         )}
@@ -85,6 +85,7 @@ export default function LoginPage() {
 
           <div>
             <button 
+              id="btn-ingresar"
               type="submit" 
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >

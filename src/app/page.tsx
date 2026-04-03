@@ -50,11 +50,8 @@ export default function NotesPage() {
               </h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-gray-600 text-sm">{userEmail}</span>
-              <button
-                onClick={handleLogout}
-                className="text-sm text-red-600 hover:text-red-800"
-              >
+              <span id="user-email-display" className="text-gray-600 text-sm">{userEmail}</span>
+              <button id="btn-cerrar-sesion" onClick={handleLogout} className="text-sm text-red-600 hover:text-red-800">
                 Cerrar Sesión
               </button>
             </div>
@@ -79,10 +76,10 @@ export default function NotesPage() {
           </div>
 
           {/* Notes Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div id="notes-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {notes.map((note) => (
-              <Link href={`/notes/${note.id}`} key={note.id}>
-                <div className="bg-white shadow rounded-lg border border-gray-200 hover:shadow-md transition cursor-pointer h-full">
+              <Link href={`/notes/${note.id}`} key={note.id} id={`note-card-${note.id}`}>
+                <div className="bg-white overflow-hidden shadow rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200 cursor-pointer h-full">
                   <div className="px-4 py-5 sm:p-6 flex flex-col h-full">
                     <h3 className="text-lg font-medium text-gray-900 mb-2 truncate">
                       {note.title}
