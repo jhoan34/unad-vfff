@@ -71,6 +71,7 @@ export default function NotesPage() {
             </h2>
             <Link
               href="/notes/new"
+              id="btn-nueva-nota"
               className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
             >
               + Nueva Nota
